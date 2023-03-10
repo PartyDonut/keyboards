@@ -1,10 +1,10 @@
 manifest:
   remotes:
     - name: zmkfirmware
-      url-base: https://github.com/PartyDonut/
+      url-base: https://github.com/ftc/
   projects:
     - name: zmk
-      remote: zmkfirmware
+      remote: zmk
       revision: zmk_split
       import: app/west.yml
   self:
