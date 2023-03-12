@@ -109,7 +109,7 @@
                     &kp ENTER  &kp LGUI  &kp LALT   &mo LOWER   &kp SPACE  &kp BACKSPACE   &mo RAISE	  &kp RIGHT_GUI   &kp RALT  &kp RIGHT_SHIFT
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP &inc_dec_kp PAGE_UP PAGE_DOWN>;
+            sensor-bindings = <&inc_dec_mwh SCROLL_DOWN SCROLL_UP &inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>;
         };
 
         lower_layer {
