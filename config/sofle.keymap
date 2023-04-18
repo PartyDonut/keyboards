@@ -17,30 +17,36 @@
 #define RAISE 2
 #define MOUSE 3
 #define ADJUST 4
-
-
 #define U_MOUSE_MOVE_MAX 1800   				 /* <--- New max speed setting (default: 600) */
+
 #undef MOVE_UP
 #undef MOVE_DOWN
 #undef MOVE_LEFT
 #undef MOVE_RIGHT
+
 #define MOVE_UP MOVE_VERT(-U_MOUSE_MOVE_MAX)
 #define MOVE_DOWN MOVE_VERT(U_MOUSE_MOVE_MAX)
 #define MOVE_LEFT MOVE_HOR(-U_MOUSE_MOVE_MAX)
 #define MOVE_RIGHT MOVE_HOR(U_MOUSE_MOVE_MAX)
-
 #define U_MOUSE_SCROLL_MAX 150                    /* <--- New max speed setting (default: 10) */
+
 #undef SCROLL_UP
 #undef SCROLL_DOWN
 #undef SCROLL_LEFT
 #undef SCROLL_RIGHT
+
 #define SCROLL_UP SCROLL_VERT(U_MOUSE_SCROLL_MAX)
 #define SCROLL_DOWN SCROLL_VERT(-U_MOUSE_SCROLL_MAX)
 #define SCROLL_LEFT SCROLL_HOR(-U_MOUSE_SCROLL_MAX)
 #define SCROLL_RIGHT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
 
-&left_encoder { resolution = <2>; };
-&right_encoder { resolution = <2>; };
+&left_encoder {
+    resolution = <2>;
+};
+
+&right_encoder {
+    resolution = <2>;
+};
 
 &mmv {
     time-to-max-speed-ms = <2000>;
@@ -72,14 +78,16 @@
         };
     };
 
-	behaviors {
+    behaviors {
         mo_tog: behavior_mo_tog {
             compatible = "zmk,behavior-hold-tap";
             label = "mo_tog";
             #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <150>;
-            bindings = <&mo>, <&tog>;
+            bindings =
+                <&mo>,
+                <&tog>;
         };
     };
 
@@ -91,7 +99,7 @@
 
         combo_lock {
             bindings = <&tog 5>;
-            key-positions = <53 56 33>;
+            key-positions = <53 56 33 26>;
             layers = <0 3 4 1 2 5>;
             timeout-ms = <50>;
         };
@@ -102,11 +110,11 @@
 
         default_layer {
             bindings = <
-   &kp ESC  &kp N1     &kp N2    &kp N3    &kp N4  &kp N5                             &kp N6         &kp N7     &kp N8           &kp N9    &kp N0        &tog MOUSE
-   &kp TAB   &kp Q      &kp W     &kp E     &kp R   &kp T                              &kp Y          &kp U      &kp I            &kp O     &kp P        &kp RET
-&kp LSHIFT   &kp A      &kp S     &kp D     &kp F   &kp G                              &kp H          &kp J      &kp K            &kp L  &kp SEMI        &kp SQT
- &kp LCTRL   &kp Z      &kp X     &kp C     &kp V   &kp B  &kp C_MUTE      &caps_word    &kp N          &kp M  &kp COMMA          &kp DOT  &kp FSLH        &kp MINUS
-                    &kp ENTER  &kp LGUI  &kp LALT   &mo LOWER   &kp SPACE  &kp BACKSPACE   &mo RAISE	  &kp RIGHT_GUI   &kp RALT  &kp RIGHT_SHIFT
+   &kp ESC  &kp N1     &kp N2    &kp N3    &kp N4     &kp N5                                &kp N6         &kp N7     &kp N8           &kp N9    &kp N0  &tog MOUSE
+   &kp TAB   &kp Q      &kp W     &kp E     &kp R      &kp T                                 &kp Y          &kp U      &kp I            &kp O     &kp P     &kp RET
+&kp LSHIFT   &kp A      &kp S     &kp D     &kp F      &kp G                                 &kp H          &kp J      &kp K            &kp L  &kp SEMI     &kp SQT
+ &kp LCTRL   &kp Z      &kp X     &kp C     &kp V      &kp B  &kp C_MUTE     &caps_word      &kp N          &kp M  &kp COMMA          &kp DOT  &kp FSLH   &kp MINUS
+                    &kp ENTER  &kp LGUI  &kp LALT  &mo LOWER   &kp SPACE  &kp BACKSPACE  &mo RAISE  &kp RIGHT_GUI   &kp RALT  &kp RIGHT_SHIFT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PAGE_UP PAGE_DOWN>;
@@ -114,11 +122,11 @@
 
         lower_layer {
             bindings = <
-    &kp GRAVE                                &kp F1            &kp F2                                 &kp F3        &kp F4         &kp F5                            &kp F6    &kp F7           &kp F8      &kp F9          &kp F10   &kp F11
-&kp LA(SPACE)  								&mwh SCROLL_UP      &kp UP 						 &mwh SCROLL_DOWN  	&kp DELETE 	 &kp LC(LS(L))   					 &kp N6    &kp N7           &kp N8      &kp N9  &kp PRINTSCREEN   &kp F12
-       &trans                              &kp LEFT          &kp DOWN                              &kp RIGHT     &mkp MB4    &mkp MB5                         &kp CARET  &kp AMPS  &kp KP_MULTIPLY    &kp LPAR         &kp RPAR  &kp PIPE
-       &trans                        &kp C_PREVIOUS  &kp C_PLAY_PAUSE                             &kp C_NEXT    &kp LA(UP)   &kp LA(DOWN)    &reset  &bootloader   &kp LBKT  &kp RBKT         &kp SEMI  &kp INSERT         &kp BSLH    &trans
-                                                               &trans                                 &trans        &trans         &trans  &caps_word     &trans    &trans           &trans      &trans 			&trans
+    &kp GRAVE          &kp F1            &kp F2            &kp F3      &kp F4         &kp F5                              &kp F6    &kp F7           &kp F8      &kp F9          &kp F10   &kp F11
+&kp LA(SPACE)  &mwh SCROLL_UP            &kp UP  &mwh SCROLL_DOWN  &kp DELETE  &kp LC(LS(L))                              &kp N6    &kp N7           &kp N8      &kp N9  &kp PRINTSCREEN   &kp F12
+       &trans        &kp LEFT          &kp DOWN         &kp RIGHT    &mkp MB4       &mkp MB5                           &kp CARET  &kp AMPS  &kp KP_MULTIPLY    &kp LPAR         &kp RPAR  &kp PIPE
+       &trans  &kp C_PREVIOUS  &kp C_PLAY_PAUSE        &kp C_NEXT  &kp LA(UP)   &kp LA(DOWN)      &reset  &bootloader   &kp LBKT  &kp RBKT         &kp SEMI  &kp INSERT         &kp BSLH    &trans
+                                         &trans            &trans      &trans         &trans  &caps_word       &trans     &trans    &trans           &trans      &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PAGE_UP PAGE_DOWN>;
@@ -126,11 +134,11 @@
 
         raise_layer {
             bindings = <
-&trans                  &trans     &trans                   &trans       &trans  &trans                                 &trans             &trans                &trans               &kp EXCL  &kp EQUAL  &kp BACKSLASH
-&trans                 &kp INS  &kp PSCRN              &kp K_CMENU       &trans  &trans                               &kp HOME            &kp END      &kp LEFT_BRACKET      &kp RIGHT_BRACKET  &kp MINUS       &kp PLUS
-&trans                &mkp MB5  &kp LCTRL                &mkp MB4       &trans  &trans                           &kp LC(LEFT)      &kp LC(RIGHT)        &kp LEFT_BRACE        &kp RIGHT_BRACE  &kp MINUS         &trans
-&trans              &kp K_UNDO  &kp K_CUT               &kp K_COPY  &kp K_PASTE  &trans  &bootloader  &reset  &kp LC(LS(LEFT))  &kp LC(LS(RIGHT))  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LC(A)         &trans
-                                   &trans                   &trans       &trans  &trans       &trans  &trans            &trans             &trans                &trans              &kp LG(L)
+&trans      &trans     &trans       &trans       &trans  &trans                                 &trans             &trans                &trans               &kp EXCL  &kp EQUAL  &kp BACKSLASH
+&trans     &kp INS  &kp PSCRN  &kp K_CMENU       &trans  &trans                               &kp HOME            &kp END      &kp LEFT_BRACKET      &kp RIGHT_BRACKET  &kp MINUS       &kp PLUS
+&trans    &mkp MB5  &kp LCTRL     &mkp MB4       &trans  &trans                           &kp LC(LEFT)      &kp LC(RIGHT)        &kp LEFT_BRACE        &kp RIGHT_BRACE  &kp MINUS         &trans
+&trans  &kp K_UNDO  &kp K_CUT   &kp K_COPY  &kp K_PASTE  &trans  &bootloader  &reset  &kp LC(LS(LEFT))  &kp LC(LS(RIGHT))  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LC(A)         &trans
+                       &trans       &trans       &trans  &trans       &trans  &trans            &trans             &trans                &trans              &kp LG(L)
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PAGE_UP PAGE_DOWN>;
@@ -138,27 +146,25 @@
 
         Mouse_Layer {
             bindings = <
-&trans          &trans          &trans           &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans         &mwh SCROLL_UP    &mmv MOVE_UP   &mwh SCROLL_DOWN  &trans  &trans         &trans  &trans  &mwh SCROLL_UP  &mwh SCROLL_DOWN  &trans &trans
-&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans                  &trans  &mkp MCLK  &mkp LCLK  &mkp RCLK  &trans  &trans
-&trans          &trans          &trans           &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                                &trans           &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans          &trans          &trans            &trans  &trans  &trans                  &trans     &trans          &trans            &trans  &trans  &trans
+&trans  &mwh SCROLL_UP    &mmv MOVE_UP  &mwh SCROLL_DOWN  &trans  &trans                  &trans     &trans  &mwh SCROLL_UP  &mwh SCROLL_DOWN  &trans  &trans
+&trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &trans  &trans                  &trans  &mkp MCLK       &mkp LCLK         &mkp RCLK  &trans  &trans
+&trans          &trans          &trans            &trans  &trans  &trans  &trans  &trans  &trans     &trans          &trans            &trans  &trans  &trans
+                                &trans            &trans  &trans  &trans  &trans  &trans  &trans     &trans          &trans            &trans
             >;
         };
 
-
         Adjust_layer {
             bindings = <
-       &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3     &bt BT_SEL 4                           &none            &none            &none   &none  &none  &none
-&ext_power EP_OFF         &none         &none         &none         &none     &out OUT_TOG                 &rgb_ug RGB_SAI  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD   &none  &none  &none
-            &none         &none         &none         &none         &none            &none                 &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &rgb_ug RGB_HUI   &none  &none  &none
-            &none         &none         &none         &none         &none  &rgb_ug RGB_TOG   &none  &none  &rgb_ug RGB_TOG  &rgb_ug RGB_EFF            &none   &none  &none  &none
-                                        &none         &none         &none            &none   &none  &none            &none            &none            &none   &none
+       &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3     &bt BT_SEL 4                          &none            &none            &none  &none  &none  &none
+&ext_power EP_OFF         &none         &none         &none         &none     &out OUT_TOG                &rgb_ug RGB_SAI  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &none  &none  &none
+            &none         &none         &none         &none         &none            &none                &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &rgb_ug RGB_HUI  &none  &none  &none
+            &none         &none         &none         &none         &none  &rgb_ug RGB_TOG  &none  &none  &rgb_ug RGB_TOG  &rgb_ug RGB_EFF            &none  &none  &none  &none
+                                        &none         &none         &none            &none  &none  &none            &none            &none            &none  &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOLUME_UP &inc_dec_kp PAGE_UP PAGE_DOWN>;
         };
-
 
         Lock_layer {
             bindings = <
