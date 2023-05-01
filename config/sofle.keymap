@@ -134,7 +134,7 @@
 
         raise_layer {
             bindings = <
-&trans      &trans     &trans       &trans       &trans  &trans                                 &trans             &trans                &trans               &kp EXCL  &kp EQUAL  &kp BACKSLASH
+&trans      &trans     &trans       &trans       &trans  &trans                              &kp MINUS           &kp PLUS         &kp BACKSLASH               &kp EXCL  &kp EQUAL  &kp BACKSLASH
 &trans     &kp INS  &kp PSCRN  &kp K_CMENU       &trans  &trans                               &kp HOME            &kp END      &kp LEFT_BRACKET      &kp RIGHT_BRACKET  &kp MINUS       &kp PLUS
 &trans    &mkp MB5  &kp LCTRL     &mkp MB4       &trans  &trans                           &kp LC(LEFT)      &kp LC(RIGHT)        &kp LEFT_BRACE        &kp RIGHT_BRACE  &kp MINUS         &trans
 &trans  &kp K_UNDO  &kp K_CUT   &kp K_COPY  &kp K_PASTE  &trans  &bootloader  &reset  &kp LC(LS(LEFT))  &kp LC(LS(RIGHT))  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LC(A)         &trans
