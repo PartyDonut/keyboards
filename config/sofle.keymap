@@ -84,15 +84,17 @@
             label = "mo_tog";
             #binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <150>;
+            tapping-term-ms = <125>;
             bindings = <&mo>, <&tog>;
         };
+
         mouse_tap_layer: mouse_tap_layer {
             compatible = "zmk,behavior-tap-dance";
             label = "MOUSE_TAP_LAYER";
             #binding-cells = <0>;
             bindings = <&mo 2>, <&mo 3>;
         };
+
         super_backspace: super_backspace {
             compatible = "zmk,behavior-tap-dance";
             label = "SUPER_BACKSPACE";
