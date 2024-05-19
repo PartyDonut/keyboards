@@ -4,8 +4,8 @@ manifest:
       url-base: https://github.com/PartyDonut/
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: nomad
+      remote: zmk-old
+      revision: zmk-split
       import: app/west.yml
   self:
     path: config
